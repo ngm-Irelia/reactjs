@@ -1,5 +1,9 @@
 import React , { Component, Fragment } from 'react';
 import './styls.css';
+import 'antd/dist/antd.css';
+import { Input, Button, List } from 'antd';
+//import store from './store';
+
 //import InputList from './InputList';
 //Fragment react16提供的占位符
 
@@ -49,22 +53,25 @@ class TodoList extends Component {
   render(){
     return (
       <Fragment>
-        <div>
+        <div style={{margin:'20px'}}>
           <label htmlFor="insertArea" className="input-label">输入内容</label>
-          <input id="insertArea" value={this.state.inputValue} 
-            onChange={this.handleInputChange.bind(this)}
-            ref={(input)=> this.aainput = input}
-          /> 
-          <button onClick={this.handleBtnClick.bind(this)}> 提交 </button>
+          <Input placeholder="todo info" style={{width:'300px'}}
+          id="insertArea" value={this.state.inputValue} 
+          onChange={this.handleInputChange.bind(this)}
+          ref={(input)=> this.aainput = input}
+          ></Input>
+          <Button type="primary" onClick={this.handleBtnClick.bind(this)}>提交</Button>
+          
+ 
         </div>
         <div>
-          {
-            this.state.inputList.map((item,index) => {
-              return <div key={index} onClick={this.handleDelete.bind(this,index)} >{item}</div>
-              //return <div key={index} onClick={this.handleDelete.bind(this,index)} dangerouslySetInnerHTML={{ __html:item }} ></div>
-
-            })
-          }
+          <List
+            style={{width:'300px', margin:'20px'}}
+            bordered
+            dataSource={this.state.inputList}
+            renderItem={ (item, index) => (<List.Item onClick={this.handleDelete.bind(this,index)}>{item}</List.Item>) }
+            
+          ></List>
         </div>
 
           {/* 不转译的显示数据 dangerouslySetInnerHTML={{ __html:item }} */}
