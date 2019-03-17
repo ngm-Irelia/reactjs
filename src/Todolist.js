@@ -1,9 +1,8 @@
 import React , { Component, Fragment } from 'react';
-import './styls.css';
-import 'antd/dist/antd.css';
-import { Input, Button, List } from 'antd';
+//import './styls.css';
 import store from './store';
 import { getInputChangeAction } from './store/actionCreators'
+import TodoListUI from './TodolistUI';
 
 //import InputList from './InputList';
 //Fragment react16提供的占位符
@@ -17,6 +16,10 @@ class TodoList extends Component {
     
     //订阅sotre的改变，会调用该方法
     this.handleStoreChange = this.handleStoreChange.bind(this);
+    this.handleBtnClick = this.handleBtnClick.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+
     store.subscribe(this.handleStoreChange);
   }
 
@@ -74,7 +77,6 @@ class TodoList extends Component {
     this.setState({
       inputList:list
     }) */
-
     const action = {
       type:"delete_todo_item",
       index
@@ -85,31 +87,13 @@ class TodoList extends Component {
 
   render(){
     return (
-      <Fragment>
-        <div style={{margin:'20px'}}>
-          <label htmlFor="insertArea" className="input-label">输入内容</label>
-          <Input placeholder="todo info" style={{width:'300px'}}
-          id="insertArea" value={this.state.inputValue} 
-          onChange={this.handleInputChange.bind(this)}
-          ref={(input)=> this.aainput = input}
-          ></Input>
-          <Button type="primary" onClick={this.handleBtnClick.bind(this)}>提交</Button>
-          
- 
-        </div>
-        <div>
-          <List
-            style={{width:'300px', margin:'20px'}}
-            bordered
-            dataSource={this.state.inputList}
-            renderItem={ (item, index) => (<List.Item onClick={this.handleDelete.bind(this,index)}>{item}</List.Item>) }
-            
-          ></List>
-        </div>
-
-          {/* 不转译的显示数据 dangerouslySetInnerHTML={{ __html:item }} */}
-
-      </Fragment>
+      <TodoListUI 
+        inputValue={ this.state.inputValue }
+        handleInputChange= { this.handleInputChange }
+        inputList = { this.state.inputList }
+        handleBtnClick = { this.handleBtnClick }
+        handleDelete = { this.handleDelete }
+      />
     )
   }
 

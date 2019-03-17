@@ -7,8 +7,8 @@ const defaultState = {
 export default (state = defaultState, action) => {
 
   if(action.type === 'change_input_value'){
-    console.log("我不进行操作，我看看store变化了没")
-    console.log(state);
+    //console.log("我不进行操作，我看看store变化了没")
+    //console.log(state);
     const newState = JSON.parse(JSON.stringify(state)); // 深拷贝
     newState.inputValue = action.value;
     return newState;
