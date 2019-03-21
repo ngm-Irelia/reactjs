@@ -1,4 +1,4 @@
-import { CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM } from './actionTypes.js'
+import { CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM, INIT_LIST } from './actionTypes.js'
 
 const defaultState = {
   inputList:['123', '234'],
@@ -23,6 +23,13 @@ export default (state = defaultState, action) => {
   if(action.type === DELETE_TODO_ITEM){
     const newState = JSON.parse(JSON.stringify(state)); // 深拷贝
     newState.inputList.splice( action.index, 1 );
+    
+    return newState;
+  }
+
+  if(action.type === INIT_LIST){
+    const newState = JSON.parse(JSON.stringify(state)); // 深拷贝
+    newState.inputList = action.data;
     
     return newState;
   }

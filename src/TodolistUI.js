@@ -8,9 +8,9 @@ const TodoListUI = (props)=> {
         <div style={{margin:'20px'}}>
           <label htmlFor="insertArea" className="input-label">输入内容</label>
           <Input placeholder="todo info" style={{width:'300px'}}
-          id="insertArea" value={props.inputValue} 
-          onChange={props.handleInputChange}
-          //ref={(input)=> this.aainput = input}
+            id="insertArea" value={props.inputValue} 
+            onChange={props.handleInputChange}
+            //ref={(input)=> this.aainput = input}
           ></Input>
           <Button type="primary" onClick={props.handleBtnClick}>提交</Button>
           
