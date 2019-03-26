@@ -1,3 +1,6 @@
+## 使用 react 和 redux 开发
+##master分支，使用了  react-redux进行开发，更加简单
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
