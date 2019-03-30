@@ -1,24 +1,6 @@
+import { combineReducers } from 'redux'; // 用来整合所有细分的 reducer文件 ;; 使用 combineReducers 完成对数据的拆分管理
+import headerReducer from '../common/header/reducer';
 
-const defaultState = {
-  focused:false
-};
-
-export default (state=defaultState, action) => {
-  
-  if(action.type === "search_focus"){
-    const newState = JSON.parse( JSON.stringify(state));
-
-    newState.focused = true;
-    return newState;
-  }
-
-
-  if(action.type === "search_blur"){
-    const newState = JSON.parse( JSON.stringify(state));
-
-    newState.focused = false;
-    return newState;
-  }
-
-  return state;
-}
+export default combineReducers({
+  header: headerReducer
+})

@@ -8,15 +8,6 @@ import { HeaderWrapper, Logo, Nav, NavItem, NavSearch } from './style';
 
 class Header extends Component {
 
-    constructor(props){
-        super(props);
-
-        this.state = {
-            focused:false
-        }
-  
-    }
-
     render() {
         return (
             <HeaderWrapper className="aaaa">
@@ -39,9 +30,9 @@ class Header extends Component {
 
 //把store中的数据，映射到props
 const mapStateToProps = (state) => {
-
+    console.log(state)
     return {
-        focused:state.focused
+        focused:state.header.focused //因为使用combineReducers，路径发生变化，需要加上.header
     }
 }
 
