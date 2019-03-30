@@ -1,7 +1,21 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import { HeaderWrapper, Logo, Nav, NavItem, NavSearch } from './style';
 
+
+//无状态组件性能更好
+
 class Header extends Component {
+
+    constructor(props){
+        super(props);
+
+        this.state = {
+            focused:false
+        }
+  
+    }
 
     render() {
         return (
@@ -12,11 +26,41 @@ class Header extends Component {
                     <NavItem className="left">首页</NavItem>
                     <NavItem className="right">登陆</NavItem>
                     <NavItem className="right"><span className="iconfont">&#xe6e4;</span></NavItem>
-                    <NavSearch></NavSearch>
+                    <NavSearch
+                        className={ this.props.focused ? 'focused' : ''}
+                        onFocus = { this.props.handleFocused }
+                        onBlur = { this.props.handleBlur }
+                    ></NavSearch>
                 </Nav>
             </HeaderWrapper>
         )
     }
 }
 
-export default Header;
+//把store中的数据，映射到props
+const mapStateToProps = (state) => {
+
+    return {
+        focused:state.focused
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    
+    return {
+        handleFocused(){
+            const action = {
+                type: 'search_focus'
+            };
+            dispatch(action);  //其实就是store.dispatch()
+        },
+        handleBlur(){
+            const action = {
+                type: 'search_blur'
+            };
+            dispatch(action); 
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

@@ -48,7 +48,13 @@ export const NavSearch = styled.input.attrs({
     border:none;
     outline:none;
     border-radius:19px;
+    border:1px solid #666;
+    transition: width 500ms, border 500ms;
     &::placeholder {
         color:#999;
+    }
+    &.focused {
+        width:260px;
+        border:1px solid blue;
     }
 `;
