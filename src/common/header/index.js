@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import { HeaderWrapper, Logo, Nav, NavItem, NavSearch } from './style';
 
+import { actionCreators } from './store';
+
 
 //无状态组件性能更好
 
@@ -30,7 +32,6 @@ class Header extends Component {
 
 //把store中的数据，映射到props
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         focused:state.header.focused //因为使用combineReducers，路径发生变化，需要加上.header
     }
@@ -40,15 +41,11 @@ const mapDispatchToProps = (dispatch) => {
     
     return {
         handleFocused(){
-            const action = {
-                type: 'search_focus'
-            };
+            const action = actionCreators.setSearchFocus();
             dispatch(action);  //其实就是store.dispatch()
         },
         handleBlur(){
-            const action = {
-                type: 'search_blur'
-            };
+            const action = actionCreators.setSearchBlur();
             dispatch(action); 
         }
     }
