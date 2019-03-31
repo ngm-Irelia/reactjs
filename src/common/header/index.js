@@ -43,6 +43,11 @@ const mapDispatchToProps = (dispatch) => {
         handleFocused(){
             const action = actionCreators.setSearchFocus();
             dispatch(action);  //其实就是store.dispatch()
+
+
+            //发送请求接口
+            const listAction = actionCreators.getTodoList();
+            dispatch(listAction);  
         },
         handleBlur(){
             const action = actionCreators.setSearchBlur();

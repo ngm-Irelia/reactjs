@@ -1,4 +1,4 @@
-import { SEARCH_FOCUS, SEARCH_BLUR } from './actionTypes'
+import { SEARCH_FOCUS, SEARCH_BLUR, INIT_LIST_ACTION } from './actionTypes'
 
 const defaultState = {
   focused:false
@@ -19,6 +19,11 @@ export default (state=defaultState, action) => {
 
     newState.focused = false;
     return newState;
+  }
+
+  if(action.type === INIT_LIST_ACTION){
+    console.log("reducer---- action.value ===")
+    console.log(action.value);
   }
 
   return state;
