@@ -44,7 +44,7 @@ const mapDispatchToProps = (dispatch) => {
             const action = actionCreators.setSearchFocus();
             dispatch(action);  //其实就是store.dispatch()
 
-
+            console.log(this)
             //发送请求接口
             const listAction = actionCreators.getTodoList();
             dispatch(listAction);  
