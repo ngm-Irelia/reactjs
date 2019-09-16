@@ -29,14 +29,11 @@ function initVelement(vnode){
     node.setAttribute(k,reset[k]);
   })
 
-  initVchildren(node, children);
-  return node;
-}
-
-function initVchildren(node, children){
-  
+  // 添加子元素！！！
   children.forEach(c=>{
     // 子元素也去调用vnode
     node.append(initVnode(c))
   })
-} 
+
+  return node;
+}
