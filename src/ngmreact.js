@@ -1,4 +1,3 @@
-import { createVnode } from './vdom';
 
 /**
  * 解析jsx代码时候自动调用的！ 所以我们看不到是在哪里显式调用
@@ -22,7 +21,7 @@ function createElement(type,props, ...children){
     vtype = 1;
   }
   
-  return createVnode(vtype,type,props,children); //重点！！  返回值做为 react-dom 的 render 方法的第一个参数！！！
+  return {vtype, type, props, children}; //重点！！  返回值做为 react-dom 的 render 方法的第一个参数！！！
 }
 
 export default { createElement }

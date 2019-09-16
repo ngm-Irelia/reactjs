@@ -1,7 +1,3 @@
-export function createVnode(vtype, type, props, children){
-  return {vtype, type, props, children}
-}
-
 //把虚拟dom， 转化为html代码！！！
 export function initVnode(vnode){
   let { vtype } = vnode;
