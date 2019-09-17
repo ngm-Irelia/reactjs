@@ -7,8 +7,14 @@ export function initVnode(vnode){
   }
 
   // 1 : div span 等普通html
+  // 2 : 函数式组件
+  // 3 : 类式组件
   if(vtype ===1){
     return initVelement(vnode);
+  }else if(vtype ===2){
+    return initFuncComp(vnode);
+  }else if(vtype ===3){
+    return initClassComp(vnode);
   }
 
 }
@@ -32,4 +38,12 @@ function initVelement(vnode){
   })
 
   return node;
+}
+
+function initFuncComp(vnode){
+ 
+}
+
+function initClassComp(vnode){
+  
 }

@@ -19,9 +19,25 @@ function createElement(type,props, ...children){
   let vtype;
   if(typeof type === 'string'){
     vtype = 1;
+  }else if(typeof type === 'function'){
+    if(type.isReactComponent){
+      vtype = 3; //类class组件
+    }else{
+      vtype = 2; //函数组件
+    }
+    
   }
   
   return {vtype, type, props, children}; //重点！！  返回值做为 react-dom 的 render 方法的第一个参数！！！
 }
 
-export default { createElement }
+
+class Component {
+  static isReactComponent = true;// 用来标识 是不是class组件
+  constructor(props){
+    this.props = props;
+    this.state = {};
+  }
+}
+
+export default { createElement, Component }
