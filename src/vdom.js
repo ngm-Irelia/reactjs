@@ -41,9 +41,17 @@ function initVelement(vnode){
 }
 
 function initFuncComp(vnode){
- 
+  const {type, props, children} = vnode;
+  console.log("我看看props是什么")
+  console.log(props);
+  let newnode = type(props);
+  return initVnode(newnode);
 }
 
 function initClassComp(vnode){
-  
+  const {type, props, children} = vnode;
+  let component = new type(vnode.props);
+  let newNode = component.render();
+
+  return initVnode(newNode);
 }
